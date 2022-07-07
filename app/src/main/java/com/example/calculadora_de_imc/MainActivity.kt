@@ -15,21 +15,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        //variaveies para chamar os itens
         var textResultado = findViewById<TextView>(R.id.textResultado)
         val calcPeso = findViewById<EditText>(R.id.editPeso)
         val calcAltura = findViewById<EditText>(R.id.editAltura)
         val btCalcular = findViewById<Button>(R.id.buttonCalcular)
 
-
+        //funcao p executar ao clicar
         btCalcular.setOnClickListener{
-
+            //variaveis p receber e calcular os dados
             val answer1 = Double.parseDouble(calcPeso.getText().toString())
             val answer2 = Double.parseDouble(calcAltura.getText().toString())
             val res = answer1 / (answer2 * answer2)
 
-            textResultado.text = ""
-
+           //metodo para fazer as verificacoes de acordo com
+            // a tabela imc
             if (res < 19)
             {
                 textResultado.text = "O resultado é " + (res) +". Você está abaixo do peso ideal."

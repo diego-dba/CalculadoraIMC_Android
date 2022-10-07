@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import java.lang.Double
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +15,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //variável para facilitar mensagem de resposta
+        val imc = resources.getString(R.string.resultado_imc)
 
         //variaveies para chamar os itens
         var textResultado = findViewById<TextView>(R.id.textResultado)
@@ -28,31 +32,32 @@ class MainActivity : AppCompatActivity() {
             val answer2 = Double.parseDouble(calcAltura.getText().toString())
             val res = answer1 / (answer2 * answer2)
 
+
            //metodo para fazer as verificacoes de acordo com
             // a tabela imc
             if (res < 19)
             {
-                textResultado.text = "O resultado é " + (res) +". Você está abaixo do peso ideal."
+                textResultado.text = imc + " " + (res).roundToInt() +". Você está abaixo do peso ideal."
 
             }
             else if (res <= 19 || res < 25){
 
-                textResultado.text = "O resultado é " + (res) +". Você está no peso ideal."
+                textResultado.text = imc + " " + (res).roundToInt() +". Você está no peso ideal."
 
             }
             else if (res <= 25  || res < 30){
 
-                textResultado.text = "O resultado é " + (res) +". Você está com sobrepeso."
+                textResultado.text = imc + " " + (res).roundToInt() +". Você está com sobrepeso."
 
             }
             else if (res <= 30  || res < 40){
 
-                textResultado.text = "O resultado é " + (res) +". Você está em obesidade grau 1."
+                textResultado.text = imc + " " + (res).roundToInt() +". Você está em obesidade grau 1."
 
             }
             else if (res >= 40){
 
-                textResultado.text = "O resultado é " + (res) +". Você está em obesidade grau 2."
+                textResultado.text = imc + " " + (res).roundToInt() +". Você está em obesidade grau 2."
 
             }
 
